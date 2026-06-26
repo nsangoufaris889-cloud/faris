@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LESSGOO - Learn Computer Science</title>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+margin:0;
+background:#eef7ff;
+color:#333;
+}
+
+header{
+background:#2196F3;
+color:white;
+padding:20px;
+text-align:center;
+}
+
+nav{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+background:#1976D2;
+}
+
+nav button{
+margin:8px;
+padding:10px 18px;
+border:none;
+background:white;
+border-radius:8px;
+cursor:pointer;
+font-weight:bold;
+}
+
+nav button:hover{
+background:#FFD54F;
+}
+
+section{
+display:none;
+padding:20px;
+max-width:900px;
+margin:auto;
+}
+
+.active{
+display:block;
+}
+
+.card{
+background:white;
+padding:20px;
+margin:15px 0;
+border-radius:12px;
+box-shadow:0 4px 10px rgba(0,0,0,.15);
+}
+
+.quiz button{
+margin-top:10px;
+padding:10px;
+width:100%;
+font-size:16px;
+}
+
+#score{
+font-size:22px;
+font-weight:bold;
+color:green;
+}
+
+footer{
+text-align:center;
+padding:15px;
+background:#2196F3;
+color:white;
+margin-top:30px;
+}
+
+.dark{
+background:#222;
+color:white;
+}
+
+.dark .card{
+background:#444;
+}
+
+.dark nav{
+background:#111;
+}
+
+.dark nav button{
+background:#666;
+color:white;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🚀 LESSGOO</h1>
+<p>Learn Computer Science the Fun Way!</p>
+</header>
+
+<nav>
+<button onclick="show('home')">Home</button>
+<button onclick="show('lesson1')">Computer</button>
+<button onclick="show('lesson2')">Hardware</button>
+<button onclick="show('lesson3')">Software</button>
+<button onclick="show('lesson4')">Keyboard</button>
+<button onclick="show('lesson5')">Internet</button>
+<button onclick="show('quiz')">Quiz</button>
+<button onclick="toggleDark()">🌙 Dark Mode</button>
+</nav>
+
+<section id="home" class="active">
+<div class="card">
+<h2>👋 Welcome!</h2>
+
+<p>
+LESSGOO helps primary school students learn computer science through
+simple lessons and quizzes.
+</p>
+
+<h3>What you will learn</h3>
+
+<ul>
+<li>💻 What is a Computer?</li>
+<li>🖥 Hardware</li>
+<li>📱 Software</li>
+<li>⌨ Keyboard Keys</li>
+<li>🌍 Internet</li>
+<li>🏆 Quiz Challenge</li>
+</ul>
+
+</div>
+</section>
+
+<section id="lesson1">
+<div class="card">
+<h2>💻 What is a Computer?</h2>
+
+<p>
+A computer is an electronic machine that helps us work, learn,
+play games, draw pictures, and solve problems.
+</p>
+
+<p><b>Examples:</b></p>
+
+<ul>
+<li>Laptop</li>
+<li>Desktop</li>
+<li>Tablet</li>
+</ul>
+
+</div>
+</section>
+
+<section id="lesson2">
+<div class="card">
+<h2>🖥 Hardware</h2>
+
+<p>
+Hardware means the parts of a computer that you can touch.
+</p>
+
+<ul>
+<li>Monitor</li>
+<li>Keyboard</li>
+<li>Mouse</li>
+<li>CPU</li>
+<li>Printer</li>
+</ul>
+
+</div>
+</section>
+
+<section id="lesson3">
+<div class="card">
+<h2>📱 Software</h2>
+
+<p>
+Software is the programs inside a computer.
+</p>
+
+<ul>
+<li>Paint</li>
+<li>Microsoft Word</li>
+<li>Calculator</li>
+<li>Games</li>
+</ul>
+
+</div>
+</section>
+
+<section id="lesson4">
+<div class="card">
+<h2>⌨ Keyboard</h2>
+
+<p>The keyboard helps us type letters and numbers.</p>
+
+<ul>
+<li>Enter Key</li>
+<li>Space Bar</li>
+<li>Shift Key</li>
+<li>Backspace</li>
+</ul>
+
+</div>
+</section>
+
+<section id="lesson5">
+<div class="card">
+<h2>🌍 Internet</h2>
+
+<p>
+The Internet lets people find information, watch videos,
+play games, and communicate with others.
+</p>
+
+<p>
+Always use the Internet safely and ask an adult before sharing personal information.
+</p>
+
+</div>
+</section>
+
+<section id="quiz">
+
+<div class="card quiz">
+
+<h2>🏆 Quiz Time!</h2>
+
+<p id="question"></p>
+
+<div id="answers"></div>
+
+<h3 id="score"></h3>
+
+<button onclick="restart()">Restart Quiz</button>
+
+</div>
+
+</section>
+
+<footer>
+Made with ❤️ for Primary School Students | LESSGOO
+</footer>
+
+<script>
+
+function show(id){
+
+document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
+
+document.getElementById(id).classList.add("active");
+
+}
+
+function toggleDark(){
+
+document.body.classList.toggle("dark");
+
+}
+
+const quiz=[
+
+{
+q:"Which one is hardware?",
+a:["Keyboard","Paint","Internet","Game"],
+c:0
+},
+
+{
+q:"Which one is software?",
+a:["Mouse","Monitor","Paint","Printer"],
+c:2
+},
+
+{
+q:"What does a keyboard help us do?",
+a:["Cook","Type","Swim","Drive"],
+c:1
+},
+
+{
+q:"The Internet helps us...",
+a:["Travel to space","Find information","Grow trees","Wash clothes"],
+c:1
+},
+
+{
+q:"A computer is a...",
+a:["Fruit","Animal","Machine","Toy"],
+c:2
+}
+
+];
+
+let current=0;
+let marks=0;
+
+function load(){
+
+if(current>=quiz.length){
+
+document.getElementById("question").innerHTML="🎉 Quiz Finished!";
+
+document.getElementById("answers").innerHTML="";
+
+document.getElementById("score").innerHTML=
+"Your Score: "+marks+" / "+quiz.length;
+
+return;
+
+}
+
+document.getElementById("question").innerHTML=quiz[current].q;
+
+let html="";
+
+quiz[current].a.forEach((x,i)=>{
+
+html+=`<button onclick="check(${i})">${x}</button>`;
+
+});
+
+document.getElementById("answers").innerHTML=html;
+
+}
+
+function check(i){
+
+if(i===quiz[current].c){
+
+marks++;
+
+}
+
+current++;
+
+load();
+
+}
+
+function restart(){
+
+current=0;
+
+marks=0;
+
+load();
+
+}
+
+load();
+
+</script>
+
+</body>
+</html<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>LESSGOO - Learn Computer Science</title>
+
+<style>
+body{
+	font-family:Arial,sans-serif;
+	margin:0;
+	background:#eef7ff;
+	color:#333;
+}
+
+header{
+	background:#2196F3;
+	color:white;
+	padding:20px;
+	text-align:center;
+}
+
+nav{
+	display:flex;
+	justify-content:center;
+	flex-wrap:wrap;
+	background:#1976D2;
+}
+
+nav button{
+	margin:8px;
+	padding:10px 18px;
+	border:none;
+	background:white;
+	border-radius:8px;
+	cursor:pointer;
+	font-weight:bold;
+}
+
+nav button:hover{
+	background:#FFD54F;
+}
+
+section{
+	display:none;
+	padding:20px;
+	max-width:900px;
+	margin:auto;
+}
+
+.active{
+	display:block;
+}
+
+.card{
+	background:white;
+	padding:20px;
+	margin:15px 0;
+	border-radius:12px;
+	box-shadow:0 4px 10px rgba(0,0,0,.15);
+}
+
+.quiz button{
+	margin-top:10px;
+	padding:10px;
+	width:100%;
+	font-size:16px;
+}
+
+#score{
+	font-size:22px;
+	font-weight:bold;
+	color:green;
+}
+
+footer{
+	text-align:center;
+	padding:15px;
+	background:#2196F3;
+	color:white;
+	margin-top:30px;
+}
+
+.dark{
+	background:#222;
+	color:white;
+}
+
+.dark .card{
+	background:#444;
+}
+
+.dark nav{
+	background:#111;
+}
+
+.dark nav button{
+	background:#666;
+	color:white;
+}
+</style>
+	</head>
+
+	<body>
+
+		<header>
+			<h1>🚀 LESSGOO</h1>
+			<p>Learn Computer Science the Fun Way!</p>
+		</header>
+
+		<nav>
+			<button onclick="show('home')">Home</button>
+			<button onclick="show('lesson1')">Computer</button>
+			<button onclick="show('lesson2')">Hardware</button>
+			<button onclick="show('lesson3')">Software</button>
+			<button onclick="show('lesson4')">Keyboard</button>
+			<button onclick="show('lesson5')">Internet</button>
+			<button onclick="show('quiz')">Quiz</button>
+			<button onclick="toggleDark()">🌙 Dark Mode</button>
+		</nav>
+
+		<section id="home" class="active">
+			<div class="card">
+				<h2>👋 Welcome!</h2>
+
+				<p>
+				LESSGOO helps primary school students learn computer science through
+				simple lessons and quizzes.
+				</p>
+
+				<h3>What you will learn</h3>
+
+				<ul>
+					<li>💻 What is a Computer?</li>
+					<li>🖥 Hardware</li>
+					<li>📱 Software</li>
+					<li>⌨ Keyboard Keys</li>
+					<li>🌍 Internet</li>
+					<li>🏆 Quiz Challenge</li>
+				</ul>
+
+			</div>
+		</section>
+
+		<section id="lesson1">
+			<div class="card">
+				<h2>💻 What is a Computer?</h2>
+
+				<p>
+				A computer is an electronic machine that helps us work, learn,
+				play games, draw pictures, and solve problems.
+				</p>
+
+				<p><b>Examples:</b></p>
+
+				<ul>
+					<li>Laptop</li>
+					<li>Desktop</li>
+					<li>Tablet</li>
+				</ul>
+
+			</div>
+		</section>
+
+		<section id="lesson2">
+			<div class="card">
+				<h2>🖥 Hardware</h2>
+
+				<p>
+				Hardware means the parts of a computer that you can touch.
+				</p>
+
+				<ul>
+					<li>Monitor</li>
+					<li>Keyboard</li>
+					<li>Mouse</li>
+					<li>CPU</li>
+					<li>Printer</li>
+				</ul>
+
+			</div>
+		</section>
+
+		<section id="lesson3">
+			<div class="card">
+				<h2>📱 Software</h2>
+
+				<p>
+				Software is the programs inside a computer.
+				</p>
+
+				<ul>
+					<li>Paint</li>
+					<li>Microsoft Word</li>
+					<li>Calculator</li>
+					<li>Games</li>
+				</ul>
+
+			</div>
+		</section>
+
+		<section id="lesson4">
+			<div class="card">
+				<h2>⌨ Keyboard</h2>
+
+				<p>The keyboard helps us type letters and numbers.</p>
+
+				<ul>
+					<li>Enter Key</li>
+					<li>Space Bar</li>
+					<li>Shift Key</li>
+					<li>Backspace</li>
+				</ul>
+
+			</div>
+		</section>
+
+		<section id="lesson5">
+			<div class="card">
+				<h2>🌍 Internet</h2>
+
+				<p>
+				The Internet lets people find information, watch videos,
+				play games, and communicate with others.
+				</p>
+
+				<p>
+				Always use the Internet safely and ask an adult before sharing personal information.
+				</p>
+
+			</div>
+		</section>
+
+		<section id="quiz">
+
+			<div class="card quiz">
+
+				<h2>🏆 Quiz Time!</h2>
+
+				<p id="question"></p>
+
+				<div id="answers"></div>
+
+				<h3 id="score"></h3>
+
+				<button onclick="restart()">Restart Quiz</button>
+
+			</div>
+
+		</section>
+
+		<footer>
+			Made with ❤️ for Primary School Students | LESSGOO
+		</footer>
+
+		<script>
+
+			function show(id){
+
+				document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
+
+				document.getElementById(id).classList.add("active");
+
+			}
+
+			function toggleDark(){
+
+				document.body.classList.toggle("dark");
+
+			}
+
+				const quiz=[
+
+					{
+						q:"Which one is hardware?",
+						a:["Keyboard","Paint","Internet","Game"],
+						c:0
+					},
+
+					{
+						q:"Which one is software?",
+						a:["Mouse","Monitor","Paint","Printer"],
+						c:2
+					},
+
+					{
+						q:"What does a keyboard help us do?",
+						a:["Cook","Type","Swim","Drive"],
+						c:1
+					},
+
+					{
+						q:"The Internet helps us...",
+						a:["Travel to space","Find information","Grow trees","Wash clothes"],
+						c:1
+					},
+
+					{
+						q:"A computer is a...",
+						a:["Fruit","Animal","Machine","Toy"],
+						c:2
+					}
+
+					];
+
+			let current=0;
+			let marks=0;
+
+			function load(){
+
+				if(current>=quiz.length){
+
+					document.getElementById("question").innerHTML="🎉 Quiz Finished!";
+
+					document.getElementById("answers").innerHTML="";
+
+					document.getElementById("score").innerHTML=
+						"Your Score: "+marks+" / "+quiz.length;
+
+					return;
+
+				}
+
+					document.getElementById("question").innerHTML=quiz[current].q;
+
+				let html="";
+
+				quiz[current].a.forEach((x,i)=>{
+
+					html+=`<button onclick="check(${i})">${x}</button>`;
+
+				});
+
+				document.getElementById("answers").innerHTML=html;
+
+			}
+
+			function check(i){
+
+				if(i===quiz[current].c){
+
+					marks++;
+
+				}
+
+					current++;
+
+				load();
+
+			}
+
+			function restart(){
+
+				current=0;
+
+				marks=0;
+
+				load();
+
+			}
+
+				load();
+
+		</script>
+
+	</body>
+</html<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>LESSGOO - Learn Computer Science</title>
+
+<style>
+body{
+	font-family:Arial,sans-serif;
+	margin:0;
+	background:#eef7ff;
+	color:#333;
+}
+
+header{
+	background:#2196F3;
+	color:white;
+	padding:20px;
+	text-align:center;
+}
+
+nav{
+	display:flex;
+	justify-content:center;
+	flex-wrap:wrap;
+	background:#1976D2;
+}
+
+nav button{
+	margin:8px;
+	padding:10px 18px;
+	border:none;
+	background:white;
+	border-radius:8px;
+	cursor:pointer;
+	font-weight:bold;
+}
+
+nav button:hover{
+	background:#FFD54F;
+}
+
+section{
+	display:none;
+	padding:20px;
+	max-width:900px;
+	margin:auto;
+}
+
+.active{
+	display:block;
+}
+
+.card{
+	background:white;
+	padding:20px;
+	margin:15px 0;
+	border-radius:12px;
+	box-shadow:0 4px 10px rgba(0,0,0,.15);
+}
+
+.quiz button{
+	margin-top:10px;
+	padding:10px;
+	width:100%;
+	font-size:16px;
+}
+
+#score{
+	font-size:22px;
+	font-weight:bold;
+	color:green;
+}
+
+footer{
+	text-align:center;
+	padding:15px;
+	background:#2196F3;
+	color:white;
+	margin-top:30px;
+}
+
+.dark{
+	background:#222;
+	color:white;
+}
+
+.dark .card{
+	background:#444;
+}
+
+.dark nav{
+	background:#111;
+}
+
+.dark nav button{
+	background:#666;
+	color:white;
+}
+</style>
+	</head>
+
+	<body>
+
+		<header>
+			<h1>🚀 LESSGOO</h1>
+			<p>Learn Computer Science the Fun Way!</p>
+		</header>
+
+		<nav>
+			<button onclick="show('home')">Home</button>
+			<button onclick="show('lesson1')">Computer</button>
+			<button onclick="show('lesson2')">Hardware</button>
+			<button onclick="show('lesson3')">Software</button>
+			<button onclick="show('lesson4')">Keyboard</button>
+			<button onclick="show('lesson5')">Internet</button>
+			<button onclick="show('quiz')">Quiz</button>
+			<button onclick="toggleDark()">🌙 Dark Mode</button>
+		</nav>
+
+		<section id="home" class="active">
+			<div class="card">
+				<h2>👋 Welcome!</h2>
+
+				<p>
+				LESSGOO helps primary school students learn computer science through
+				simple lessons and quizzes.
+				</p>
+
+				<h3>What you will learn</h3>
+
+				<ul>
+					<li>💻 What is a Computer?</li>
+					<li>🖥 Hardware</li>
+					<li>📱 Software</li>
+					<li>⌨ Keyboard Keys</li>
+					<li>🌍 Internet</li>
+					<li>🏆 Quiz Challenge</li>
+				</ul>
+
+			</div>
+		</section>
+
+		<section id="lesson1">
+			<div class="card">
+				<h2>💻 What is a Computer?</h2>
+
+				<p>
+				A computer is an electronic machine that helps us work, learn,
+				play games, draw pictures, and solve problems.
+				</p>
+
+				<p><b>Examples:</b></p>
+
+				<ul>
+					<li>Laptop</li>
+					<li>Desktop</li>
+					<li>Tablet</li>
+				</ul>
+
+			</div>
+		</section>
+
+		<section id="lesson2">
+			<div class="card">
+				<h2>🖥 Hardware</h2>
+
+				<p>
+				Hardware means the parts of a computer that you can touch.
+				</p>
+
+				<ul>
+					<li>Monitor</li>
+					<li>Keyboard</li>
+					<li>Mouse</li>
+					<li>CPU</li>
+					<li>Printer</li>
+				</ul>
+
+			</div>
+		</section>
+
+		<section id="lesson3">
+			<div class="card">
+				<h2>📱 Software</h2>
+
+				<p>
+				Software is the programs inside a computer.
+				</p>
+
+				<ul>
+					<li>Paint</li>
+					<li>Microsoft Word</li>
+					<li>Calculator</li>
+					<li>Games</li>
+				</ul>
+
+			</div>
+		</section>
+
+		<section id="lesson4">
+			<div class="card">
+				<h2>⌨ Keyboard</h2>
+
+				<p>The keyboard helps us type letters and numbers.</p>
+
+				<ul>
+					<li>Enter Key</li>
+					<li>Space Bar</li>
+					<li>Shift Key</li>
+					<li>Backspace</li>
+				</ul>
+
+			</div>
+		</section>
+
+		<section id="lesson5">
+			<div class="card">
+				<h2>🌍 Internet</h2>
+
+				<p>
+				The Internet lets people find information, watch videos,
+				play games, and communicate with others.
+				</p>
+
+				<p>
+				Always use the Internet safely and ask an adult before sharing personal information.
+				</p>
+
+			</div>
+		</section>
+
+		<section id="quiz">
+
+			<div class="card quiz">
+
+				<h2>🏆 Quiz Time!</h2>
+
+				<p id="question"></p>
+
+				<div id="answers"></div>
+
+				<h3 id="score"></h3>
+
+				<button onclick="restart()">Restart Quiz</button>
+
+			</div>
+
+		</section>
+
+		<footer>
+			Made with ❤️ for Primary School Students | LESSGOO
+		</footer>
+
+		<script>
+
+			function show(id){
+
+				document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
+
+				document.getElementById(id).classList.add("active");
+
+			}
+
+			function toggleDark(){
+
+				document.body.classList.toggle("dark");
+
+			}
+
+				const quiz=[
+
+					{
+						q:"Which one is hardware?",
+						a:["Keyboard","Paint","Internet","Game"],
+						c:0
+					},
+
+					{
+						q:"Which one is software?",
+						a:["Mouse","Monitor","Paint","Printer"],
+						c:2
+					},
+
+					{
+						q:"What does a keyboard help us do?",
+						a:["Cook","Type","Swim","Drive"],
+						c:1
+					},
+
+					{
+						q:"The Internet helps us...",
+						a:["Travel to space","Find information","Grow trees","Wash clothes"],
+						c:1
+					},
+
+					{
+						q:"A computer is a...",
+						a:["Fruit","Animal","Machine","Toy"],
+						c:2
+					}
+
+					];
+
+			let current=0;
+			let marks=0;
+
+			function load(){
+
+				if(current>=quiz.length){
+
+					document.getElementById("question").innerHTML="🎉 Quiz Finished!";
+
+					document.getElementById("answers").innerHTML="";
+
+					document.getElementById("score").innerHTML=
+						"Your Score: "+marks+" / "+quiz.length;
+
+					return;
+
+				}
+
+					document.getElementById("question").innerHTML=quiz[current].q;
+
+				let html="";
+
+				quiz[current].a.forEach((x,i)=>{
+
+					html+=`<button onclick="check(${i})">${x}</button>`;
+
+				});
+
+				document.getElementById("answers").innerHTML=html;
+
+			}
+
+			function check(i){
+
+				if(i===quiz[current].c){
+
+					marks++;
+
+				}
+
+					current++;
+
+				load();
+
+			}
+
+			function restart(){
+
+				current=0;
+
+				marks=0;
+
+				load();
+
+			}
+
+				load();
+
+		</script>
+
+	</body>
+</html>>>
